@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods and Loops and switch statements using JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head><body>
+    <h1>Methods, Loops, and Switch Statements in JavaScript</h1>
+    <h2>Methods</h2>
+    <p>A method is a function that is associated with an object. It can be used
+to perform actions on the object or to return information about the object.</p> 
+    <h2>Loops</h2>
+    <p>Loops are used to repeat a block of code a certain number of times or
+until a certain condition is met. The most common types of loops in JavaScript are for loops, while loops, and do-while loops.</p>
+    <h2>Switch Statements</h2>
+    <p>A switch statement is a control structure that allows you to execute different blocks of code based on the value of a variable or expression. It is often used as an alternative to multiple if-else statements.</p>
+    <script>
+        // Example of a method
+        const person = {
+            name: 'John',
+            greet: function() {
+                return `Hello, my name is ${this.name}`;
+            }
+        };
+        console.log(person.greet());
+
+        // Example of a for loop
+        for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }
+
+        // Example of a switch statement
+        const day = 'Monday';
+        switch (day) {
+            case 'Monday':
+                console.log('Start of the week');
+                break;
+            case 'Friday':
+                console.log('End of the week');
+                break;
+            default:
+                console.log('Midweek');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <title>Password stranthing App</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validatePassword(password) {
+            const minLength = 8;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSpecialChar = /[!@#$%^&*]/.test(password);
+
+            if (password.length < minLength) {
+                return 'Password must be at least 8 characters long.';
+            }
+            if (!hasUpperCase) {
+                return 'Password must contain at least one uppercase letter.';
+            }
+            if (!hasNumber) {
+                return 'Password must contain at least one number.';
+            }
+            if (!hasSpecialChar) {
+                return 'Password must contain at least one special character (!@#$%^&*).';
+            }
+            return 'Password is valid.';
+
+        }
+
+    </script>
+
+</head>
+<body>
+    <h1>Password Strength Checker</h1>
+    <p>Enter your password below to check its strength:</p>
+    <input type="password" id="passwordInput" placeholder="Enter your password">
+    <button onclick="checkPasswordStrength()">Check Strength</button>
+    <div id="strengthResult"></div>
+    <p id="validationResult"></p>
+    <br>
+    <button onclick="
+        const password = document.getElementById('passwordInput').value;
+        const validationMessage = validatePassword(password);
+        document.getElementById('validationResult').innerText = validationMessage;
+    ">Validate Password</button>
+</body>
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById('passwordInput').value;
+            let strength = 'Weak';
+
+            if (password.length >= 8) {
+                if (/[A-Z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password)) {
+                    strength = 'Strong';
+                } else if (/[A-Z]/.test(password) || /[0-9]/.test(password) || /[!@#$%^&*]/.test(password)) {
+                    strength = 'Moderate';
+                }
+            }
+
+            document.getElementById('strengthResult').innerText = `Password Strength: ${strength}`;
+        }
+    </script>
+</html>

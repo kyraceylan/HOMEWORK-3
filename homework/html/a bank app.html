@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html > 
+<head>
+    <title>Bank App</title>
+    <meta charset="UTF-8">  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .account {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        .account h2 {
+            margin-top: 0;
+        }
+        .account input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .account button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="account">
+        <h2>Account Balance: $<span id="balance1">0</span></h2>
+        <input type="number" id="amount1" placeholder="Enter amount">
+        <button onclick="deposit(1)">Deposit</button>
+        <button onclick="withdraw(1)">Withdraw</button>
+    </div>
+
+    <div class="account">
+        <h2>Account Balance: $<span id="balance2">0</span></h2>
+        <input type="number" id="amount2" placeholder="Enter amount">
+        <button onclick="deposit(2)">Deposit</button>
+        <button onclick="withdraw(2)">Withdraw</button>
+    </div>
+
+    <script>
+        let balances = [0, 0];
+
+        function deposit(account) {
+            const amount = parseFloat(document.getElementById(`amount${account}`).value);
+            if (!isNaN(amount) && amount > 0) {
+                balances[account - 1] += amount;
+                document.getElementById(`balance${account}`).innerText = balances[account - 1].toFixed(2);
+                document.getElementById(`amount${account}`).value = '';
+            } else {
+                alert('Please enter a valid amount to deposit.');
+            }
+        }
+
+        function withdraw(account) {
+            const amount = parseFloat(document.getElementById(`amount${account}`).value);
+            if (!isNaN(amount) && amount > 0 && amount <= balances[account - 1]) {
+                balances[account - 1] -= amount;
+                document.getElementById(`balance${account}`).innerText = balances[account - 1].toFixed(2);
+                document.getElementById(`amount${account}`).value = '';
+            } else {
+                alert('Please enter a valid amount to withdraw.');
+            }
+        }
+    </script>   
+</body>
+</html>
